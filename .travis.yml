@@ -1,0 +1,19 @@
+env:
+  secure: H5HsKWavIOIwk6O/lGMLeEGK56Z3dsoxS5zsDGoKq7k7A7eJFyLZAAhshqUwEA9/chCy1w5Wn4wl7SpE1FnWdwaGPFSy1psFBJoYHhhFaGktwPTqlFvSukAix7KyFHXv+gJ81fXvUSuQeAabVCiQoYWHHcethZXN8H64Ndbvg5CL6F1G8Ze/Bhp97Bia8TK8Tff98SXiPcliJH7ggHakF230oc66ErvyIhFao2iB3wiUWLBqz89JS8DQ76N9WQt/Op09UnsCa9w5Q6aOM5vQHe3yvyxh2++Cf0pgOVIMOo0eFxyfi5PNuVuPqE4RtTDZb0yYQ/nheRsEwYC+C3YnyEX5XWqmzlvMHJf8xlpe58lRNiYa9OS4ZJ8GNzRIb4Sblv015yq7Dv8K/IeVSqojo4WgbbYv7hwKwsWaZwSLqR3ApXXOKk8NMKV1/Qhsj2lhFkauJC/lvS8Yez2PAF3KMzFrcreL+I4j0DdsiSlkWADOmNJd7Cc84rV5IAl3G4bK7b3b6sVKoT6zxOKBFz+ATszNXtW7G1ZxAk/Ht9SEcEKR329KMM9ulAwi6u1BDolm3OYdVgO8B3E7eEEuiOARxoR3L7jI4wJXcokII9zSdDqjdWYB9OiB6K5myqTgkVC15CORiyYznVXXvnoGys56hVyc44PnWAQN/2eJZRwqpCk=
+language: ruby
+rvm:
+- 2.6.5
+before_install:
+- nvm install 12.13.1
+before_script:
+- npm install -g yarn@1.22.4
+- bundle config set without production
+- bundle config set path vendor/bundle
+- bundle install
+- yarn install
+script:
+- bundle exec rake db:drop
+- RAILS_ENV=test bundle exec rake db:migrate --trace
+- bundle exec rake db:test:prepare
+- bundle exec rspec
+- bundle exec cucumber

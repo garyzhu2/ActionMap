@@ -50,7 +50,7 @@ unless ARGV.any? { |a| a =~ /^gems/ } # Don't load anything when running the gem
                     if config.respond_to?(:annotations)
                         config.annotations.directories << 'features'
                         config.annotations.register_extensions('feature') { |tag| /#\s*(#{tag}):?\s*(.*)$/ }
-                      end
+                    end
                 end
             end
         end

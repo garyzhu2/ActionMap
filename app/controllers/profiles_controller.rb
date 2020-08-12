@@ -1,6 +1,5 @@
 class ProfilesController < ApplicationController
     before_action :set_representative
-    print(@Representative.offical.name)
     def rep_profile_params
         params.require(:representative).permit(:representative_id, :name, :ocdid, :title, :address, :political_party, :photo_url)
     end
@@ -16,7 +15,7 @@ class ProfilesController < ApplicationController
     def destroy
         @rep = Representative.find(params[:id])
         @rep.destroy
-        flash[:notice] = "Rep '#{@Representative.offical.name}' deleted."
+        flash[:notice] = "Rep '#{@Representative.official.name}' deleted."
         redirect_to search_representatives_path
         #will return to search representatives page if representative profile deleted
     end

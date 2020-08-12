@@ -1,10 +1,10 @@
 class ProfilesController < ApplicationController
     before_action :set_representative
     def rep_profile_params
-        params.require(:representative).permit(:representative_id, :name, :ocdid, :title, :address, :political_party, :photo_url)
+        params.require(:representative).permit(:representative_id, :name, :ocdid, :title, :locationName,:line1,:line2,:line3,:city,:state,:zip,:photo_url,:party, :photo_url)
     end
     def index
-        attr_accessor :representative_id, :name, :ocdid, :title, :address, :political_party, :photo_url
+        attr_accessor :representative_id, :name, :ocdid, :title, :locationName,:line1,:line2,:line3,:city,:state,:zip,:photo_url,:party, :photo_url
     end
 
     def new
@@ -19,8 +19,6 @@ class ProfilesController < ApplicationController
         redirect_to search_representatives_path
         #will return to search representatives page if representative profile deleted
     end
-
-    private
 
     def set_representative
         @representative = Representative.find(

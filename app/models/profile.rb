@@ -9,7 +9,7 @@ class Profile < ApplicationRecord
             title_temp = ''
             photo_url_temp = ''
             address_temp = ''
-            political_party_temp = ''
+            party_temp = ''
 
 
             rep_info.offices.each do |office|
@@ -18,7 +18,7 @@ class Profile < ApplicationRecord
                     ocdid_temp = office.division_id
                     photo_url_temp = office.official.photo_url
                     address_temp = office.address_temp
-                    political_party_temp = office.political_party 
+                    party_temp = office.party 
                 end
             end
             reps.push(rep_info)

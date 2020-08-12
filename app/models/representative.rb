@@ -16,11 +16,21 @@ class Representative < ApplicationRecord
                     ocdid_temp = office.division_id
                 end
             end
+            photo_url_temp = official.photo_url
+            party_temp = official.party
+            address = official.address.to_s
+            splitted = address.split('@')
+            # address.each do |x|
+            #     remainder = address.split
+            # one, two, three = address.match(/(^.*)()(.*)/i).captures
+            city = splitted[1].match(/.*(.*)/)
+            rep = Representative.create!({ name: official.name, ocdid: ocdid_temp, 
+                                           title: title_temp,locationName: city,
 
-            rep = Representative.create!({ name: official.name, ocdid: ocdid_temp,
-                                           title: title_temp })
+                                           photo_url: photo_url_temp, party: party_temp })
             reps.push(rep)
         end
+
 
         reps
     end

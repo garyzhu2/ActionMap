@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 2020_08_12_001004) do
-=======
 ActiveRecord::Schema.define(version: 2020_07_28_065604) do
-
 
   create_table "counties", force: :cascade do |t|
     t.string "name", null: false
@@ -53,7 +49,6 @@ ActiveRecord::Schema.define(version: 2020_07_28_065604) do
     t.datetime "updated_at", null: false
     t.string "ocdid"
     t.string "title"
-
     t.string "locationName"
     t.string "line1"
     t.string "line2"
@@ -63,8 +58,6 @@ ActiveRecord::Schema.define(version: 2020_07_28_065604) do
     t.string "zip"
     t.string "photo_url"
     t.string "party"
-=======
-
   end
 
   create_table "states", force: :cascade do |t|

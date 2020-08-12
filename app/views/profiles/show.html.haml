@@ -1,0 +1,31 @@
+-# in app/views/profiles/show.html.haml
+.row.mt-2
+    .col-12.col-md-6.offset-md-3.col-xl-4.offset-xl-4
+        %h3.text-center @profile.name
+
+
+%h2 Details about #{@profile.name}
+-# no clue how to render profile picture with google API 
+%ul#details
+ 
+  %li
+    OCD ID:
+    = @profile.ocdid
+  %li
+    Title:
+    = @profile.title
+  %li
+    Address:
+    = @profile.address
+  %li
+    Political Party:
+    = @profile.political_party
+
+%h3 Description:
+
+%td
+    = link_to representative_news_items_path(rep.id), class: 'btn btn-primary' do
+        %i.fas.fa-newspaper
+        News Articles
+= button_to 'Delete', rep_profile_path, :method => :delete, :confirm => 'Are you sure?'
+= link_to 'Back to Representative list', representative_path(@profile.name)

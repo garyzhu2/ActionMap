@@ -21,6 +21,10 @@ class Representative < ApplicationRecord
             address = official.address.to_s
             splitted = address.split('=').to_s.delete '\",>'
             splitted = splitted.split('\\')
+            city = ''
+            street = ''
+            state = ''
+            zip = ''
             if splitted.length() == 9
                 city = splitted[1]
                 street = splitted[3]
@@ -42,8 +46,9 @@ class Representative < ApplicationRecord
             #     remainder = address.split
             # one, two, three = address.match(/(^.*)()(.*)/i).captures
             #city = splitted[1].match(([\\/])
+
             rep = Representative.create!({ name: official.name, ocdid: ocdid_temp, 
-                                           title: title_temp, city: city,line1: street,
+                                           title: title_temp, line1: street, city: city,
                                            state: state,zip: zip,
                                            photo_url: photo_url_temp, party: party_temp })
             reps.push(rep)

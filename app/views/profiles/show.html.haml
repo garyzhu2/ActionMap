@@ -1,0 +1,17 @@
+-# in app/views/profiles/show.html.haml
+
+.card.mb-3
+  %h2.text-center.card_header #{@representative.name}
+  %h5.text-center.text-muted #{@representative.title}
+  %h6.text-center.text-muted #{@representative.party}
+  .card-body    
+    %img.rounded.mx-auto.d-block{:alt => "Picture not available", :src => @representative.photo_url, :style => "height: 25%; width: 25%; "}
+  .card-body
+  %ul.list-group.list-group-flush
+    %li.text-center.list-group-item 
+      #{@representative.line1} 
+      %br
+      #{@representative.state} #{@representative.zip}             
+  .card-footer.text-center.text-muted
+    #{@representative.ocdid} 
+.card

@@ -1,7 +1,7 @@
 .container-fluid.py-5
     .row
         .col-md-8.offset-md-2
-            %h1.text-center Listing News Articles for #{@representative.name}
+            %h1.text-center= link_to Listing News Articles for "#{@representative.name} ", representative_profile_path(rep.id)
             .clearfix.my-4
                 .float-right
                     = link_to representative_new_my_news_item_path(@representative), class: 'mx-1 btn btn-primary' do
@@ -12,7 +12,7 @@
                         All Representatives
             .table-responsive-md
                 %table.table.table-striped.table-hover#events
-                    %caption Table of News Items for #{@representative.name}
+                    %caption= link_to Table of News Items for "#{@representative.name} ", representative_profile_path(rep.id)
                     %thead.thead-dark
                         %tr
                             %th #

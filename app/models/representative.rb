@@ -19,13 +19,16 @@ class Representative < ApplicationRecord
             photo_url_temp = official.photo_url
             party_temp = official.party
             address = official.address.to_s
-            splitted = address.split('@')
+            splitted = address.split('=').to_s.delete '\",>'
+            splitted = splitted.split('\\')
+            #splitted = address.split('/"/').to_s.split(',')
+
             # address.each do |x|
             #     remainder = address.split
             # one, two, three = address.match(/(^.*)()(.*)/i).captures
-            city = splitted[1].match(/.*(.*)/)
+            #city = splitted[1].match(([\\/])
             rep = Representative.create!({ name: official.name, ocdid: ocdid_temp, 
-                                           title: title_temp,locationName: city,
+                                           title: title_temp,locationName: splitted,
 
                                            photo_url: photo_url_temp, party: party_temp })
             reps.push(rep)

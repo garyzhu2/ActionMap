@@ -15,7 +15,7 @@
                     %dt.col-sm-3.text-md-right Representative:
                     %dt.col-sm-9                        
                         = link_to "#{@news_item.representative.name}", representative_profile_path(@news_item.representative)                    
-                -#%dl.row
+                %dl.row
                     %dt.col-sm-3.text-md-right Rating:
                     %dt.col-sm-9
                         = @news_item.rating

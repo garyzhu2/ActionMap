@@ -3,7 +3,7 @@
 class Representative < ApplicationRecord
     has_many :news_items, dependent: :delete_all
 
-    def self.civic_api_to_representative_params(rep_info)
+    def self.civic_api_to_rep_params(rep_info)
         reps = []
 
         rep_info.officials.each_with_index do |official, index|
@@ -21,39 +21,17 @@ class Representative < ApplicationRecord
             address = official.address.to_s
             splitted = address.split('=').to_s.delete '\",>'
             splitted = splitted.split('\\')
-            city = ''
-            street = ''
-            state = ''
-            zip = ''
-            if splitted.length() == 9
-                city = splitted[1]
-                street = splitted[3]
-                state = splitted[5]
-                zip = splitted[7]
-            else
-                city = splitted[1]
-                street = splitted[3]
-                state = splitted[5]
-                zip = splitted[7]
-                # city = "Formatting error from API"
-                # street = "Formatting error from API"
-                # state = "Formatting error from API"
-                # zip = "Formatting error from API"
-            end
-            #splitted = address.split('/"/').to_s.split(',')
+            city = splitted[1]
+            street = splitted[3]
+            state = splitted[5]
+            zip = splitted[7]
 
-            # address.each do |x|
-            #     remainder = address.split
-            # one, two, three = address.match(/(^.*)()(.*)/i).captures
-            #city = splitted[1].match(([\\/])
-
-            rep = Representative.create!({ name: official.name, ocdid: ocdid_temp, 
+            rep = Representative.create!({ name: official.name, ocdid: ocdid_temp,
                                            title: title_temp, line1: street, city: city,
-                                           state: state,zip: zip,
+                                           state: state, zip: zip,
                                            photo_url: photo_url_temp, party: party_temp })
             reps.push(rep)
         end
-
 
         reps
     end

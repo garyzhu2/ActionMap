@@ -11,6 +11,7 @@ class NewsItemsController < ApplicationController
     end
 
     def show; end
+    
     def create
         @ratings = @news_item.ratings
     end

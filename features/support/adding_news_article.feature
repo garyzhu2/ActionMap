@@ -1,8 +1,8 @@
-Feature: display representative's profile page by clicking on their name from their news article page
+Feature: adding news article with the correct features
 
-    As a curious user on a representative's news article listing
-    So that I can quickly find more details on a representative
-    I want to click on a represenative's name to see their profile details
+    As an engaged user on the news article listing
+    So that I can add details to my new news article 
+    I want to be able to access a Representative, Issue, and Rating drop down
 
     Background: representatives of Alaska have been added to database
 
@@ -24,13 +24,12 @@ Feature: display representative's profile page by clicking on their name from th
         And I am on the Alaska representative search result page
         Then 12 seed representatives movies should exist
 
-    Scenario: clicking on the news article page
-        Given I am on the search results page
-        And I press on "News Articles" of "Donald J. Trump"
-        And I press on the text "Donald J. Trump"
-        Then I am on the profile page of "Donald J. Trump"
-        And I should see "President of the United States"
-        And I should see "1600 Pennsylvania Avenue Northwest Washington DC"
-        And I should see "20500"
-        And I should see "Republican"
-        And I should see "ocd-division/country:us"
+    Scenario: clicking on the drop down
+        Given I am on the Edit news article page
+        And I enter "COVID-19" in the "Title:" field
+        And I enter "google.com" in the "Link:" field
+        And I enter "quarantine news" in the "Description:" field
+        And I select "Donald J. Trump" from "Representative:"
+        And I select "Social Security and Medicare" from "Issues:"
+        And I select "5" from "Raings:"
+        Then I should see "News item was successfully created."

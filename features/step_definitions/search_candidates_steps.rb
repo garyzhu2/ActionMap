@@ -14,6 +14,8 @@ When(/I search for (.*) by entering (.*) into the search field/) do |representat
     # expect valid address
 end
 
+=======
+
 Then(/I should see (.*)/) do |representative|
     # check if it is correct representative
     expect representative.address.to eq

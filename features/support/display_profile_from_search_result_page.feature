@@ -2,7 +2,7 @@ Feature: display representative's profile page by clicking on their name from se
 
     As a curious user on a search result page
     So that I can quickly find more details on a representative
-    I want to click on represenative's name to see their profile details
+    I want to click on a represenative's name to see their profile details
 
     Background: representatives of Alaska have been added to database
 
@@ -25,10 +25,11 @@ Feature: display representative's profile page by clicking on their name from se
         Then 12 seed representatives movies should exist
 
     Scenario: clicking on a representative
-        When I click on "Donald J. Trump"
-        Then I should be on the representative's profile page
-        And I should see his office/title is "President of the United States"
-        And I should see his address is "1600 Pennsylvania Avenue Northwest Washington DC"
-        And I should see his Zip is "20500"
-        And I should see his political party is "Republican"
-        And I should see his OCD ID is "ocd-division/country:us"
+        Given I am on the search results page
+        When I press on "Donald J. Trump"
+        Then I am on the profile page of "Donald J. Trump"
+        And I should see "President of the United States"
+        And I should see "1600 Pennsylvania Avenue Northwest Washington DC"
+        And I should see "20500"
+        And I should see "Republican"
+        And I should see "ocd-division/country:us"

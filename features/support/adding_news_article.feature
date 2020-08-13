@@ -29,7 +29,7 @@ Feature: adding news article with the correct features
         And I enter "COVID-19" in the "Title:" field
         And I enter "google.com" in the "Link:" field
         And I enter "quarantine news" in the "Description:" field
-        And I select "Donald J. Trump" from the "Representative:" field
-        And I select "Social Security and Medicare" from the "Issues:" field
-        And I select "5" from the "Raings:" field
+        And I select "Donald J. Trump" from "Representative:"
+        And I select "Social Security and Medicare" from "Issues:"
+        And I select "5" from "Raings:"
         Then I should see "News item was successfully created."

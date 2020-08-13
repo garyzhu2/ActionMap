@@ -41,13 +41,14 @@ ActiveRecord::Schema.define(version: 2020_08_13_012702) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "issue"
+    t.integer "ratings"
     t.index ["representative_id"], name: "index_news_items_on_representative_id"
   end
 
   create_table "ratings", force: :cascade do |t|
-    t.integer "news_item_id", null: false
+    t.integer "users_id", null: false
     t.integer "rating"
-    t.index ["news_item_id"], name: "index_ratings_on_news_item_id"
+    t.index ["users_id"], name: "index_ratings_on_users_id"
   end
 
   create_table "representatives", force: :cascade do |t|

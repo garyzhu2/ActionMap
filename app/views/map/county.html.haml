@@ -11,8 +11,28 @@
 .row
     .col-12.col-lg-8.offset-lg-2
         #actionmap-county-representatives
-            .jumbotron.text-center
-                The list of county representatives should appear here.
+            //copy pasta
+            .card
+                .card-header#actionmap-representatives-details-header
+                    %h3.text-center
+                        %button.btn.btn-link.collapsed{ 'data-toggle': 'collapse',
+                        'data-target': '#actionmap-representatives-details-collapse', 'aria-expanded': false,
+                        'aria-controls': 'actionmap-represetatives-details-collapse' } Representatives in #{@county.name}
+                .collapse#actionmap-representatives-details-collapse{ 'data-parent': '#actionmap-representatives-details-header',
+                'aria-labelledby': '#actionmap-representatives-details-header' }
+                    .card-body
+                        .table-responsive-md
+                            %table.table.table-striped.table-hover#actionmap-counties-represetatives-table
+                                %caption Table of Representatives in #{@county.name}
+                                %thead.thead-dark
+                                    %tr
+                                        %th #
+                                        %th Name
+                                        %th Office
+                                        %th View
+                                %tbody
+
+
 #actionmap-info-box
 .d-none#actionmap-info-container{ 'data-counties': @county_details.to_json, 'data-state': @state.to_json,
 'data-state-topojson-file': asset_path("states/#{@state[:symbol].downcase}.topo.json"),

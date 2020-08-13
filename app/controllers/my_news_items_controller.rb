@@ -3,6 +3,8 @@
 class MyNewsItemsController < SessionController
     before_action :set_representative
     before_action :set_representatives_list
+    before_action :set_ratings_list
+    before_action :set_issues_list
     before_action :set_news_item, only: %i[edit update destroy]
 
     def new
@@ -12,7 +14,14 @@ class MyNewsItemsController < SessionController
     def edit; end
 
     def create
+       
+
+        # new_rating = Rating.new(rating: news_item_params[:rating], news_item: @news_item)
+
         @news_item = NewsItem.new(news_item_params)
+       
+        @news_item.ratings.append(Rating.new(rating: news_item_params[:rating], news_item: @news_item))
+
         if @news_item.save
             redirect_to representative_news_item_path(@representative, @news_item),
                         notice: 'News item was successfully created.'
@@ -37,7 +46,12 @@ class MyNewsItemsController < SessionController
     end
 
     private
-
+    def set_ratings_list
+       @ratings_list = [1,2,3,4,5]
+    end
+    def set_issues_list 
+        @issues_list = ["Free Speech", "Immigration", "Terrorism", "Social Security and Medicare", "Abortion", "Student Loans", "Gun Control", "Unemployment", "Climate Change", "Homelessness", "Racism", "Tax Reform", "Net Neutrality", "Religious Freedom", "Border Security", "Minimum Wage", "Equal Pay"]
+    end
     def set_representative
         @representative = Representative.find(
             params[:representative_id]
@@ -54,6 +68,6 @@ class MyNewsItemsController < SessionController
 
     # Only allow a list of trusted parameters through.
     def news_item_params
-        params.require(:news_item).permit(:news, :title, :description, :link, :representative_id)
+        params.require(:news_item).permit(:news, :title, :description, :link, :representative_id, :issue, :rating)
     end
 end

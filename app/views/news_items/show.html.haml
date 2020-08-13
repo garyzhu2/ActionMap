@@ -6,22 +6,20 @@
                 %dl.row
                     %dt.col-sm-3.text-md-right Link:
                     %dt.col-sm-9
-                        %a{ href: @news_item.link }
-                            = @news_item.link
+                        = link_to @news_item.link, "http://#{@news_item.link}", {:target=>'_blank' }
                 %dl.row
                     %dt.col-sm-3.text-md-right Description:
                     %dt.col-sm-9
                         = @news_item.description                    
                 %dl.row
                     %dt.col-sm-3.text-md-right Representative:
-                    %dt.col-sm-9
-                        %a{ href: representative_path(@representative) }
-                            = @news_item.representative.name
+                    %dt.col-sm-9                        
+                        = link_to "#{@news_item.representative.name}", representative_profile_path(@news_item.representative)                    
                 -#%dl.row
                     %dt.col-sm-3.text-md-right Rating:
                     %dt.col-sm-9
                         = @news_item.rating
-                -#%dl.row
+                %dl.row
                     %dt.col-sm-3.text-md-right Issue:
                     %dt.col-sm-9
                         = @news_item.issue

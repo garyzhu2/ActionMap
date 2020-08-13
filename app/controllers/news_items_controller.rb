@@ -11,8 +11,11 @@ class NewsItemsController < ApplicationController
     end
 
     def show; end
-
+    def create
+        @ratings = @news_item.ratings
+    end
     private
+
     def set_ratings_list
         @ratings_list = [1,2,3,4,5]
     end

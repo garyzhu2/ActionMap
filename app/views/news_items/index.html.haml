@@ -51,3 +51,5 @@
                                     method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' do
                                         %i.fas.fa-trash &nbsp;Delete
                                 %td = item.issue
+                                %td = item.rating
+                                -# not sure if this just displays an aggregate of ratings or just the rating specified? 

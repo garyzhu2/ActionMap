@@ -45,9 +45,9 @@ ActiveRecord::Schema.define(version: 2020_08_13_012702) do
   end
 
   create_table "ratings", force: :cascade do |t|
-    t.integer "users_id", null: false
+    t.integer "news_item_id", null: false
     t.integer "rating"
-    t.index ["users_id"], name: "index_ratings_on_users_id"
+    t.index ["news_item_id"], name: "index_ratings_on_news_item_id"
   end
 
   create_table "representatives", force: :cascade do |t|

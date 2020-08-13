@@ -14,7 +14,14 @@ class MyNewsItemsController < SessionController
     def edit; end
 
     def create
+       
+
+        # new_rating = Rating.new(rating: news_item_params[:rating], news_item: @news_item)
+
         @news_item = NewsItem.new(news_item_params)
+       
+        @news_item.ratings.append(Rating.new(rating: news_item_params[:rating], news_item: @news_item))
+
         if @news_item.save
             redirect_to representative_news_item_path(@representative, @news_item),
                         notice: 'News item was successfully created.'

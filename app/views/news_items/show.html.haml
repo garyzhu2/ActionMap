@@ -18,7 +18,11 @@
                 %dl.row
                     %dt.col-sm-3.text-md-right Rating:
                     %dt.col-sm-9
-                        = @news_item.ratings
+                        = @news_item.ratings.to_a
+                        -# - @news_item.ratings.each do |rating|
+                        -#     = @news_item.description 
+                        -#     = rating.getRating()
+                        
                 %dl.row
                     %dt.col-sm-3.text-md-right Issue:
                     %dt.col-sm-9

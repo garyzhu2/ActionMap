@@ -17,3 +17,7 @@ Then /^(?:|I )should see "([^"]*)"$/ do |text|
     assert page.has_content?(text)
   end
 end
+
+When /^(?:|I )press "([^"]*)"$/ do |button|
+  click_button(button)
+end

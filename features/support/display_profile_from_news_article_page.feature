@@ -25,11 +25,12 @@ Feature: display representative's profile page by clicking on their name from th
         Then 12 seed representatives movies should exist
 
     Scenario: clicking on the news article page
-        When I click on the "News Articles" of "Donald J. Trump"
-        And I click on the text "Donald J. Trump"
-        Then I should be on the representative's profile page
-        And I should see his office/title is "President of the United States"
-        And I should see his address is "1600 Pennsylvania Avenue Northwest Washington DC"
-        And I should see his Zip is "20500"
-        And I should see his political party is "Republican"
-        And I should see his OCD ID is "ocd-division/country:us"
+        Given I am on the search results page
+        And I press on "News Articles" of "Donald J. Trump"
+        And I press on the text "Donald J. Trump"
+        Then I am on the profile page of "Donald J. Trump"
+        And I should see "President of the United States"
+        And I should see "1600 Pennsylvania Avenue Northwest Washington DC"
+        And I should see "20500"
+        And I should see "Republican"
+        And I should see "ocd-division/country:us"

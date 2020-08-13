@@ -2,7 +2,7 @@ Feature: display representative's profile page by clicking on their name from se
 
     As a curious user on a search result page
     So that I can quickly find more details on a representative
-    I want to click on represenative's name to see their profile details
+    I want to click on a represenative's name to see their profile details
 
     Background: representatives of Alaska have been added to database
 

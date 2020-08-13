@@ -1,8 +1,8 @@
-Feature: display representative's profile page by clicking on their name from their news article page
+Feature: view representatives by clicking on county 
 
-    As a curious user on a representative's news article listing
-    So that I can quickly find more details on a representative
-    I want to click on a represenative's name to see their profile details
+    As a curious user on the maps
+    So that I can quickly search for representatives based on location
+    I want to click on a county to see the associated representatives
 
     Background: representatives of Alaska have been added to database
 
@@ -24,12 +24,10 @@ Feature: display representative's profile page by clicking on their name from th
         And I am on the Alaska representative search result page
         Then 12 seed representatives movies should exist
 
-    Scenario: clicking on the news article page
-        When I click on the "News Articles" of "Donald J. Trump"
-        And I click on the text "Donald J. Trump"
-        Then I should be on the representative's profile page
-        And I should see his office/title is "President of the United States"
-        And I should see his address is "1600 Pennsylvania Avenue Northwest Washington DC"
-        And I should see his Zip is "20500"
-        And I should see his political party is "Republican"
-        And I should see his OCD ID is "ocd-division/country:us"
+    Scenario: clicking on a county
+        Given I am on the National Map
+        And I click on "Alaska, AK"
+        When I click on "North Slope Borough, AK"
+        Then I should see "Kevin Meyer" with the title "Lieutenant Governor of Alaska"
+        And I should see "Dan Sullivan" with the title "U.S. Senator"
+        And I should not see "Gavin Newsom" with the title "Governor of California"
